@@ -11,4 +11,11 @@ describe("server", () => {
         expect(response.text).toBe("I love chocolate icecream");
     });
 
+    test("server responds with error when no flavor is provided", async () => {
+        const response = await request(app)
+            .get("/");
+        expect(response.status).toBe(400);
+        expect(response.text).toBe("No flavor provided");
+    });
+
 });
